@@ -34,6 +34,7 @@ Any Content-Length greater than or equal to zero is a valid value.)
 12. compressing, decompressing (br, gzip, ...)
 13. auto retry
 14. auto-close when request with closable resource
+15. response pipeline
 
 ## 방법
 1. 어떤 HTTP 버전을 지원할 것인지 정한다. 일단은 HTTP1.1 이겠지만.
