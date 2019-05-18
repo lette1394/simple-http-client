@@ -35,6 +35,9 @@ Any Content-Length greater than or equal to zero is a valid value.)
 13. auto retry
 14. auto-close when request with closable resource
 15. response pipeline
+16. MIME 타입 추측 지원
+17. redirect 지원
+18. cache 헤더 지원
 
 ## 방법
 1. 어떤 HTTP 버전을 지원할 것인지 정한다. 일단은 HTTP1.1 이겠지만.
@@ -44,6 +47,10 @@ Any Content-Length greater than or equal to zero is a valid value.)
 5. 이 때 언제나 **테스트**에 대한 것을 염두에 둔다.
 6. 각자 개발 파트를 정한 뒤, 구현한다.
 7. 브랜치 전략, 리뷰 전략 및 지속적인 피드백과 함께 프로젝트를 진행한다.
+
+## 주의사항
+1. 멀티스레드를 사용하지 않는다해도, 불변스타일로 작성
+2. 로깅 전략 구축
 
 ## 학습효과
 1. 명세가 이미 모두 나와있기 때문에, 우리가 명세를 정의하지 않아도 된다.
