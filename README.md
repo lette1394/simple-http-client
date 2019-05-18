@@ -31,7 +31,7 @@
 10. 엄격한 HTTP 명세 따르기 (ex. Content-Length
 Any Content-Length greater than or equal to zero is a valid value.)
 11. Proxy 지원
-12. 압축 지원
+12. 압축 지원 (br, gzip, ...)
 
 ## 방법
 1. 어떤 HTTP 버전을 지원할 것인지 정한다. 일단은 HTTP1.1 이겠지만.
