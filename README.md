@@ -14,12 +14,12 @@
 
 ## 필수 요구사항
 1. HTTP 모든 메서드 구현
-2. 많이 사용되는 HTTP Header 구현 (어디까지가 '많이' 인지는 논의 필요. Range Header?)
+2. 많이 사용되는 HTTP Header 구현 (어디까지가 '많이' 인지는 논의 필요)
 3. 정확한 body 파싱 및 hash
 4. multipart 업로드/다운로드 구현
 
 ### 선택 요구사항 (혹은 추가 개발사항)
-1. 병렬 업로드/다운로드
+1. 병렬 업로드/다운로드 (Range header)
 2. 플러그인 형태의 Add-on (ex. logging, tuning, file, AOP) 
 3. 10GB 파일 업로드/다운로드. 즉, 메모리에 모든 binary를 올리지 않고 relaying
 4. zero-copy
@@ -31,6 +31,7 @@
 10. 엄격한 HTTP 명세 따르기 (ex. Content-Length
 Any Content-Length greater than or equal to zero is a valid value.)
 11. Proxy 지원
+12. 압축 지원
 
 ## 방법
 1. 어떤 HTTP 버전을 지원할 것인지 정한다. 일단은 HTTP1.1 이겠지만.
