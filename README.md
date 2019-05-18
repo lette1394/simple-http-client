@@ -55,7 +55,7 @@ Any Content-Length greater than or equal to zero is a valid value.)
 
 ## 참고할만한 기존 구현체
 1. Java 9, Java 11 - HttpClient
-2. Spring RestTemplate
+2. Spring RestTemplate (above Spring 5, WebClient)
 3. Apache Http Client
 4. Unirest
 5. OkHttp
