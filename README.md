@@ -72,6 +72,29 @@ Any Content-Length greater than or equal to zero is a valid value.)
 5. OkHttp
 6. Netty (참고용)
 
+---
 
-## How to build on intellij
+## 빌드 및 실행 방법
 import build.gradle
+
+## 브랜치 전략
+**기능 단위 브랜치**
+release branch : master
+
+core/socket
+core/plugin
+core/streaming
+core/...
+
+performance/buffer
+performance/zero-copy
+performance/...
+
+h1/feature/multipart
+h1/feature/...
+
+h1/header/cache
+h1/header/range
+h1/header/...
+
+
