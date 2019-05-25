@@ -1,6 +1,10 @@
 plugins {
     id 'java'
+    id 'idea'
 }
+
+group = 'org.ooptraining'
+version = '0.0.1'
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
@@ -10,11 +14,15 @@ repositories {
 }
 
 dependencies {
-    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
+    compile 'ch.qos.logback:logback-classic:1.2.3'
+    compile 'ch.qos.logback.contrib:logback-json-core:0.1.5'
+    compile 'org.slf4j:slf4j-api:1.7.25'
+    compileOnly 'org.projectlombok:lombok:1.18.8'
 
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.4.2'
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.4.2'
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.4.2'
-    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.12.2'
-
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.4.2'
+    testCompile 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
+    testCompile 'org.junit.jupiter:junit-jupiter-params:5.4.2'
+    testCompile 'org.assertj:assertj-core:3.12.2'
+    testCompile 'ch.qos.logback:logback-classic:1.2.3'
+    testCompileOnly 'org.projectlombok:lombok:1.18.8'
 }
