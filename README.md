@@ -3,7 +3,7 @@
 ## 목표
 - 매우 직관적이고 사용하기 쉬운 Java HTTP Client Library를 구현해본다.
 - Maven Central Repository에 등록하는 것까지 목표
-- Github Star 50개? 100개?
+- Github Star 100개
 
 ## 구현 범위
 1. Socket을 직접 사용한다.
@@ -39,9 +39,11 @@ Any Content-Length greater than or equal to zero is a valid value.)
 17. redirect 지원
 18. cache 헤더 지원
 
+XX. API 문서 작성 
+
 ## 방법
-1. 어떤 HTTP 버전을 지원할 것인지 정한다. 일단은 HTTP1.1 이겠지만.
-2. 기존 구현체를 살펴보거나, RFC2616 HTTP1.1 명세, 소켓 통신, TCP/IP, java.nio 패키지, ByteBuffer등 사전 조사(라 쓰고 공부)를 진행한다.
+1. 어떤 HTTP 버전을 지원할 것인지 정한다. h1c -> h1 -> h2c -> h2 
+2. 기존 구현체를 살펴보거나, HTTP1.1 명세(RFC7230~5), 소켓 통신, TCP/IP, java.nio 패키지, ByteBuffer등 사전 조사(라 쓰고 공부)를 진행한다.
 3. 인터페이스를 결정한다. 반드시 사용하기 쉽고 **직관적**이어야 한다!
 4. 전체적인 설계를 잡는다. 추가적인 기능추가까지 고려하여 설계를 진행한다.
 5. 이 때 언제나 **테스트**에 대한 것을 염두에 둔다.
