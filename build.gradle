@@ -14,6 +14,9 @@ repositories {
 }
 
 dependencies {
+    compile 'org.apache.httpcomponents:httpclient:4.5.9'
+    compile 'org.apache.httpcomponents:httpasyncclient:4.1.4'
+
     compile 'ch.qos.logback:logback-classic:1.2.3'
     compile 'ch.qos.logback.contrib:logback-json-core:0.1.5'
     compile 'org.slf4j:slf4j-api:1.7.25'
@@ -22,7 +25,9 @@ dependencies {
     testCompile 'org.junit.jupiter:junit-jupiter-api:5.4.2'
     testCompile 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
     testCompile 'org.junit.jupiter:junit-jupiter-params:5.4.2'
+    testCompile 'org.junit.platform:junit-platform-launcher:1.5.0-M1'
     testCompile 'org.assertj:assertj-core:3.12.2'
     testCompile 'ch.qos.logback:logback-classic:1.2.3'
+    testCompile 'org.mock-server:mockserver-netty:5.5.4'
     testCompileOnly 'org.projectlombok:lombok:1.18.8'
 }
