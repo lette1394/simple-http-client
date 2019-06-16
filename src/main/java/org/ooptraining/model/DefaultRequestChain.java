@@ -23,6 +23,11 @@ public class DefaultRequestChain implements RequestChain {
     }
 
     @Override
+    public RequestChain with(final Configs configs) {
+        return null;
+    }
+
+    @Override
     public Response execute() {
         return null;
     }

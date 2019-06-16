@@ -34,7 +34,7 @@ Any Content-Length greater than or equal to zero is a valid value.)
 12. compressing, decompressing (br, gzip, ...)
 13. auto retry
 14. auto-close when request with closable resource
-15. requestChain pipeline
+15. request pipeline
 16. MIME 타입 추측 지원
 17. redirect 지원
 18. cache 헤더 지원
