@@ -9,16 +9,21 @@ public class DefaultRequestChain implements RequestChain {
 
     @Override
     public RequestChain with(final Headers headers) {
-        return null;
+        return this;
     }
 
     @Override
     public RequestChain with(final Params params) {
-        return null;
+        return this;
     }
 
     @Override
     public RequestChain with(final Cookies cookies) {
+        return this;
+    }
+
+    @Override
+    public Response execute() {
         return null;
     }
 

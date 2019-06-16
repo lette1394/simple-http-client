@@ -1,5 +1,15 @@
 package org.ooptraining.model.pipeline;
 
-public interface PipelineChain<FROM, TO> {
-    TO handle(final PipelineContext<FROM> context, final FROM body);
+import org.ooptraining.model.Response;
+
+@FunctionalInterface
+public interface PipelineChain {
+    Response handle(final PipelineContext context, final Response response);
+
+    static PipelineChain sout() {
+        return (context, response) -> {
+            System.out.println(response.parseAs(String.class));
+            return response;
+        };
+    }
 }

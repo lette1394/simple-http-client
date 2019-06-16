@@ -1,16 +1,19 @@
 package org.ooptraining.client;
 
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.ooptraining.model.*;
-import org.ooptraining.util.test.extendwith.Person;
-
-import java.io.File;
-import java.util.Optional;
+import org.ooptraining.model.Response;
+import org.ooptraining.model.pipeline.PipelineChain;
+import org.ooptraining.model.pipeline.PipelineContext;
 
 import static org.ooptraining.model.Bodies.bodies;
+import static org.ooptraining.model.Configs.configs;
 import static org.ooptraining.model.Headers.headers;
 import static org.ooptraining.model.Params.params;
+import static org.ooptraining.model.pipeline.Pipeline.pipe;
+import static org.ooptraining.model.pipeline.PipelineChain.sout;
 
 class SimpleHttpClientTest {
     private static final String DUMMY_URL = "http://localhost:8080/api/v1/test/resources";
@@ -39,7 +42,7 @@ class SimpleHttpClientTest {
     }
 
     @Test
-    void stream() {
+    void streamTest() {
         final String res = SimpleHttpClient
                 .post(DUMMY_URL)
                 .with(bodies()
@@ -49,56 +52,91 @@ class SimpleHttpClientTest {
                 .parseAs(String.class);
     }
 
-//    @Test
-//    @DisplayName("")
-//    void pipeline() {
-//        Response<Integer> response = SimpleHttpClient.get(DUMMY_URL)
-//                .runAs(String.class)
-//                .pipe(chain()
-//                        .add(new ResponseLogger())
-//                        .add(new StringReverser())
-//                        .add(new StringCounter())
-//                )
-//
-//
-//    }
-//
-//    private static class ResponseLogger implements PipelineChain<String, String> {
-//        @Override
-//        public String handle(final PipelineContext<String> context, final String body) {
-//            final Response<String> response = context.response();
-//            System.out.println(response.body());
-//            return body;
-//        }
-//    }
-//
-//    private static class StringReverser implements PipelineChain<String, String> {
-//        @Override
-//        public String handle(final PipelineContext<String> context, final String body) {
-//            return new StringBuilder(body).reverse().toString();
-//        }
-//    }
-//
-//    private static class StringCounter implements PipelineChain<String, Integer> {
-//        @Override
-//        public Integer handle(final PipelineContext<String> context, final String body) {
-//            return body.length();
-//        }
-//    }
-//
-//    @RequiredArgsConstructor
-//    private static class Adder implements PipelineChain<Integer, Integer> {
-//        private final int value;
-//
-//        @Override
-//        public Integer handle(final PipelineContext<Integer> context, final Integer body) {
-//            return body + value;
-//        }
-//    }
-//
-//    @Data
-//    private static class Person {
-//        private final String name;
-//        private final int age;
-//    }
+    @Test
+    void thenableTest() {
+        final String res = SimpleHttpClient
+                .get(DUMMY_URL)
+                .execute()
+                .then(pipe()
+                        .add(new ResponseLogger())
+                        .add(new StringReverser())
+                        .tap(System.out::println)
+                        .add(new StringCounter())
+                        .add(sout())
+                )
+                .parseAs(String.class);
+
+
+        final String res2 = SimpleHttpClient
+                .get(DUMMY_URL)
+                .execute()
+                .then(pipe()
+                        .add(new Adder(5))
+                        .tap(r -> {
+                            int i = r.parseAs(Integer.class);
+                            System.out.println(String.format("int parse : %s", i));
+                        })
+                )
+                .parseAs(String.class);
+    }
+
+    private static class ResponseLogger implements PipelineChain {
+        @Override
+        public Response handle(final PipelineContext context, final Response response) {
+            return null;
+        }
+    }
+
+    private static class StringReverser implements PipelineChain {
+        @Override
+        public Response handle(final PipelineContext context, final Response response) {
+            return null;
+        }
+    }
+
+    private static class StringCounter implements PipelineChain {
+        @Override
+        public Response handle(final PipelineContext context, final Response response) {
+            return null;
+        }
+    }
+
+    @RequiredArgsConstructor
+    private static class Adder implements PipelineChain {
+        private final int value;
+
+        @Override
+        public Response handle(final PipelineContext context, final Response response) {
+            return null;
+        }
+    }
+
+    @Test
+    void configTest() {
+        final String res = SimpleHttpClient
+                .get(DUMMY_URL)
+                .with(configs()
+                        .timeout(10))
+                .execute()
+                .parseAs(String.class);
+
+
+        final String res2 = SimpleHttpClient
+                .get(DUMMY_URL)
+                .execute()
+                .then(pipe()
+                        .add(new Adder(5))
+                        .tap(r -> {
+                            int i = r.parseAs(Integer.class);
+                            System.out.println(String.format("int parse : %s", i));
+                        })
+                )
+                .parseAs(String.class);
+    }
+
+    @Data
+    private static class Person {
+        private String name;
+        private int age;
+    }
 }

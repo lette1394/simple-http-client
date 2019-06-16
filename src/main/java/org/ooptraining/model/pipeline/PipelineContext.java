@@ -8,6 +8,6 @@ import org.ooptraining.model.Response;
 @Getter
 @Accessors(fluent = true)
 @RequiredArgsConstructor(staticName = "with")
-public class PipelineContext<T> {
-    private final Response<T> response;
+public class PipelineContext {
+    private final Response response;
 }

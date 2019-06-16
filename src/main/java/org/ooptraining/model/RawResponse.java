@@ -1,6 +1,7 @@
 package org.ooptraining.model;
 
 import lombok.RequiredArgsConstructor;
+import org.ooptraining.model.pipeline.Pipeline;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,11 +10,16 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 @RequiredArgsConstructor
-public class RawResponse implements Response {
+public class RawResponse<T> implements Response {
     private final InputStream in;
 
     @Override
     public <T> T parseAs(final Class<T> type) {
+        return null;
+    }
+
+    @Override
+    public Response then(final Pipeline pipeline) {
         return null;
     }
 

@@ -1,11 +1,10 @@
 package org.ooptraining.model;
 
-import java.io.File;
-import java.io.InputStream;
-
 public class DefaultRequestChainWithBody extends DefaultRequestChain implements RequestChainWithBody {
+    private Bodies bodies;
+
     @Override
     public RequestChainWithBody with(final Bodies bodies) {
-        return null;
+        return this;
     }
 }
